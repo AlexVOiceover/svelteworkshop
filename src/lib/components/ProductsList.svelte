@@ -14,7 +14,13 @@
 	{#each products as product}
 		<div class="rounded bg-white p-4 shadow">
 			<!-- Clickable product card heading and image -->
-			<div class="cursor-pointer" on:click={() => handleProductClick(product)}>
+			<div 
+				class="cursor-pointer" 
+				on:click={() => handleProductClick(product)}
+				on:keydown={(e) => e.key === 'Enter' && handleProductClick(product)}
+				role="button"
+				tabindex="0"
+			>
 				<h2 class="mb-2 text-lg font-semibold hover:text-blue-600">{product.name}</h2>
 				<img
 					src={product.images[1]}
