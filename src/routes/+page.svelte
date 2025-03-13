@@ -2,6 +2,7 @@
 	import Bag from '$lib/components/Bag.svelte';
 	import type { Product } from '$lib/mockData';
 	import products from '$lib/mockData';
+	import { bagItemCount } from '$lib/stores';
 
 	let bagItems: Product[] = [];
 
@@ -18,6 +19,16 @@
 		} else {
 			bagItems = [...bagItems, { ...product, quantity: 1 }];
 		}
+		updateBagItemCount();
+	}
+
+	function updateBagItemCount() {
+		const count = bagItems.reduce((acc, item) => acc + (item.quantity || 0), 0);
+		bagItemCount.set(count);
+	}
+
+	function calculateTotal(items: Product[]): number {
+		return items.reduce((acc, item) => acc + item.price * (item.quantity || 0), 0);
 	}
 </script>
 
@@ -46,4 +57,7 @@
 
 	<h2 class="mt-8 mb-4 text-xl font-bold">Your Bag</h2>
 	<Bag items={bagItems} />
+	<div class="mt-4 text-lg font-semibold">
+		Total: {calculateTotal(bagItems)} £
+	</div>
 </div>
