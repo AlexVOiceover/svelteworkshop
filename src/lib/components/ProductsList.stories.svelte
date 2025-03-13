@@ -36,6 +36,10 @@
 		}
 	];
 
+	// Mock function for goto navigation in Storybook
+	// In actual app, this would navigate to product details
+	window.goto = fn();
+
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
 		title: 'Components/ProductsList',
@@ -43,7 +47,21 @@
 		tags: ['autodocs'],
 		args: {
 			onAddToBag: fn()
-		}
+		},
+		// Add a decorator to mock the navigation for Storybook
+		decorators: [
+			(story) => {
+				// Mock the $app/navigation module for Storybook
+				// This prevents routing errors in the story
+				if (typeof window !== 'undefined') {
+					window.goto = (url) => {
+						console.log(`Would navigate to: ${url}`);
+						return Promise.resolve();
+					};
+				}
+				return story();
+			}
+		]
 	});
 </script>
 

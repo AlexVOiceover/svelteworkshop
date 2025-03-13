@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Product } from '$lib/mockData'; // Adjust the path according to your project structure
+	import type { Product } from '$lib/mockData';
 
 	export let items: Product[];
 
