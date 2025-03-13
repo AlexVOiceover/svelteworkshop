@@ -2,39 +2,40 @@
 	export let bagItemCount: number = 0;
 </script>
 
-<nav class="bg-gray-800 p-4 text-white">
-	<ul class="flex space-x-4">
-		<li>
-			<a href="/" aria-label="Home">
-				<img
-					alt="brand logo"
-					src="/logo.png"
-					style="width: 96px; height: 96px; border-radius: 10px;"
-				/>
-			</a>
-		</li>
-		<li><a href="/" class="hover:underline">Home</a></li>
-		<li><a href="#bag" class="hover:underline">Bag</a></li>
-	</ul>
-	<div class="relative">
-		<a href="/bag" class="hover:underline" aria-label="Bag">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-6 w-6"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke="currentColor"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M3 3h18l-1 14H4L3 3z"
-				/>
-			</svg>
-			<span class="absolute top-0 right-0 rounded-full bg-red-500 px-2 text-xs text-white"
-				>{bagItemCount}</span
-			>
+<nav class="flex items-end justify-between bg-gray-800 p-4 text-white">
+	<div class="flex items-center">
+		<a href="/" aria-label="Home">
+			<img
+				alt="brand logo"
+				src="/logo.png"
+				style="width: 96px; height: 96px; border-radius: 10px;"
+			/>
 		</a>
 	</div>
+	<ul class="flex items-center space-x-4">
+		<li><a href="/" class="hover:underline">Home</a></li>
+		<li><a href="#bag" class="hover:underline">Bag</a></li>
+		<div class="relative inline-block">
+			<a href="/bag" class="hover:underline" aria-label="Bag">
+				<svg
+					class="h-8 w-8"
+					id="Layer_1"
+					data-name="Layer 1"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 106.53 122.88"
+					fill="white"
+				>
+					<title>bag</title>
+					<path
+						d="M4.93,30.34H27.41V25.76a25.77,25.77,0,0,1,51.53,0v4.58H101.6a4.91,4.91,0,0,1,3.47,1.45h0a4.9,4.9,0,0,1,1.44,3.48v69.9a17.75,17.75,0,0,1-17.7,17.7H17.7A17.75,17.75,0,0,1,0,105.18V35.28A4.91,4.91,0,0,1,1.45,31.8h0a4.91,4.91,0,0,1,3.47-1.45Zm28.76,0h39V25.76a19.49,19.49,0,0,0-39,0v4.58Zm-6.28,13V36.62H6.28v62h94V36.62H78.94v6.76a6.48,6.48,0,1,1-6.28-.12V36.62h-39v6.71a6.48,6.48,0,1,1-6.28,0Z"
+					/>
+				</svg>
+				<span
+					class="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 transform rounded-full bg-red-500 px-2 text-xs text-white"
+				>
+					{bagItemCount}
+				</span>
+			</a>
+		</div>
+	</ul>
 </nav>
