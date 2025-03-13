@@ -14,7 +14,7 @@
 	</div>
 	<ul class="flex items-center space-x-4">
 		<li><a href="/" class="hover:underline">Home</a></li>
-		<li><a href="#bag" class="hover:underline">Bag</a></li>
+		<li><a href="/bag" class="hover:underline">Bag</a></li>
 		<div class="relative inline-block">
 			<a href="/bag" class="hover:underline" aria-label="Bag">
 				<svg
