@@ -7,11 +7,17 @@
 	let bagItems: Product[] = [];
 
 	function addToBag(product: Product) {
-		const existingItem = bagItems.find((item) => item.id === product.id);
-		if (existingItem) {
-			existingItem.quantity = (existingItem.quantity || 1) + 1;
+		const existingItemIndex = bagItems.findIndex((item) => item.id === product.id);
+		if (existingItemIndex !== -1) {
+			const newBagItems = [...bagItems];
+			const quantity = newBagItems[existingItemIndex].quantity || 1;
+			newBagItems[existingItemIndex] = {
+				...newBagItems[existingItemIndex],
+				quantity: quantity + 1
+			};
+			bagItems = newBagItems;
 		} else {
-			bagItems.push({ ...product, quantity: 1 });
+			bagItems = [...bagItems, { ...product, quantity: 1 }];
 		}
 	}
 </script>
