@@ -12,7 +12,7 @@
 </script>
 
 <div id="bag" class="rounded bg-gray-100 p-4 shadow">
-	<h2 class="mb-4 text-lg font-semibold">Bag Items</h2>
+	<h1 class="mb-4 text-lg font-semibold">Bag Items</h1>
 	<ul>
 		{#each $bagItems as item}
 			<li class="flex justify-between py-1">
