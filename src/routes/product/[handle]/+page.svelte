@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { bagItemCount } from '$lib/stores';
+	import { bagItemCount, bagItems } from '$lib/stores';
 	import ProductDetail from '$lib/components/ProductDetail.svelte';
 	import Bag from '$lib/components/Bag.svelte';
 	import products from '$lib/mockData';
@@ -12,26 +12,24 @@
 	// Find the product with the matching handle
 	const product = products.find(p => p.handle === handle);
 	
-	let bagItems: Product[] = [];
-	
 	function addToBag(product: Product) {
-		const existingItemIndex = bagItems.findIndex((item) => item.id === product.id);
+		const existingItemIndex = $bagItems.findIndex((item) => item.id === product.id);
 		if (existingItemIndex !== -1) {
-			const newBagItems = [...bagItems];
+			const newBagItems = [...$bagItems];
 			const quantity = newBagItems[existingItemIndex].quantity || 1;
 			newBagItems[existingItemIndex] = {
 				...newBagItems[existingItemIndex],
 				quantity: quantity + 1
 			};
-			bagItems = newBagItems;
+			bagItems.set(newBagItems);
 		} else {
-			bagItems = [...bagItems, { ...product, quantity: 1 }];
+			bagItems.set([...$bagItems, { ...product, quantity: 1 }]);
 		}
 		updateBagItemCount();
 	}
 	
 	function updateBagItemCount() {
-		const count = bagItems.reduce((acc, item) => acc + (item.quantity || 0), 0);
+		const count = $bagItems.reduce((acc, item) => acc + (item.quantity || 0), 0);
 		bagItemCount.set(count);
 	}
 	
@@ -58,12 +56,12 @@
 		</div>
 	{/if}
 	
-	{#if bagItems.length > 0}
+	{#if $bagItems.length > 0}
 		<div class="mt-12">
 			<h2 class="text-xl font-bold mb-4">Your Bag</h2>
-			<Bag items={bagItems} />
+			<Bag items={$bagItems} />
 			<div class="mt-4 text-lg font-semibold">
-				Total: {calculateTotal(bagItems)} £
+				Total: {calculateTotal($bagItems)} £
 			</div>
 		</div>
 	{/if}

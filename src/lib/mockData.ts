@@ -7,6 +7,11 @@ export type Product = {
 	availableStock: number;
 	images: string[];
 	description: string;
+	descriptions?: {
+		EN: string;
+		ES: string;
+		IT: string;
+	};
 	quantity?: number;
 };
 
@@ -23,7 +28,12 @@ export const mockProductData = [
 			'https://i.postimg.cc/RVBQFtnW/DALL-E-2025-03-04-22-13-05-A-realistic-photograph-of-a-steaming-bowl-of-spicy-ramen-labeled-Spicy.webp'
 		],
 		description:
-			'Experience the fiery blast of the Spicy Dragon Noodles, which bring a warming heat that dances on your palate with a distinctive blend of peppers and spices for an unforgettable noodle experience.'
+			'Experience the fiery blast of the Spicy Dragon Noodles, which bring a warming heat that dances on your palate with a distinctive blend of peppers and spices for an unforgettable noodle experience.',
+		descriptions: {
+			EN: 'Experience the fiery blast of the Spicy Dragon Noodles, which bring a warming heat that dances on your palate with a distinctive blend of peppers and spices for an unforgettable noodle experience.',
+			ES: 'Experimenta la explosión ardiente de los Fideos Dragón Picante, que aportan un calor reconfortante que baila en tu paladar con una mezcla distintiva de pimientos y especias para una experiencia inolvidable.',
+			IT: 'Sperimenta l\'esplosione ardente dei Noodles Drago Piccante, che portano un calore avvolgente che danza sul tuo palato con un mix distintivo di peperoni e spezie per un\'esperienza indimenticabile.'
+		}
 	},
 	{
 		id: '2',
@@ -37,7 +47,12 @@ export const mockProductData = [
 			'https://i.postimg.cc/YS9x7wL8/DALL-E-2025-03-05-09-21-18-A-realistic-photograph-of-a-steaming-bowl-of-Seaweed-Soy-Delight-rame.webp'
 		],
 		description:
-			"Dive into the ocean's embrace with Seaweed Whisper, instant noodles that capture the subtle sweetness of seaweed and the savory essence of seafood in every bite."
+			"Dive into the ocean's embrace with Seaweed Whisper, instant noodles that capture the subtle sweetness of seaweed and the savory essence of seafood in every bite.",
+		descriptions: {
+			EN: "Dive into the ocean's embrace with Seaweed Whisper, instant noodles that capture the subtle sweetness of seaweed and the savory essence of seafood in every bite.",
+			ES: "Sumérgete en el abrazo del océano con Seaweed Whisper, fideos instantáneos que capturan la sutil dulzura de las algas marinas y la esencia sabrosa de los mariscos en cada bocado.",
+			IT: "Immergiti nell'abbraccio dell'oceano con Seaweed Whisper, spaghetti istantanei che catturano la sottile dolcezza delle alghe e l'essenza saporita dei frutti di mare in ogni morso."
+		}
 	},
 	{
 		id: '3',
@@ -51,7 +66,12 @@ export const mockProductData = [
 			'https://i.postimg.cc/9Qz4FX14/DALL-E-2025-03-04-22-13-19-A-realistic-photograph-of-a-steaming-bowl-of-Coconut-Curry-Bliss-ramen.webp'
 		],
 		description:
-			'Join the Curry Carnival with these unforgettable noodles that blend exotic spices and the creamy tang of coconut milk for a flavor journey through the heart of Asia.'
+			'Join the Curry Carnival with these unforgettable noodles that blend exotic spices and the creamy tang of coconut milk for a flavor journey through the heart of Asia.',
+		descriptions: {
+			EN: 'Join the Curry Carnival with these unforgettable noodles that blend exotic spices and the creamy tang of coconut milk for a flavor journey through the heart of Asia.',
+			ES: 'Únete al Carnaval del Curry con estos fideos inolvidables que mezclan especias exóticas y el cremoso sabor de la leche de coco para un viaje de sabor a través del corazón de Asia.',
+			IT: 'Unisciti al Carnevale del Curry con questi spaghetti indimenticabili che mescolano spezie esotiche e il cremoso sapore del latte di cocco per un viaggio di sapori nel cuore dell\'Asia.'
+		}
 	},
 	{
 		id: '4',

@@ -1,5 +1,17 @@
 <script lang="ts">
+	import { language, type Language } from '$lib/stores';
 	export let bagItemCount: number = 0;
+
+	let isDropdownOpen = false;
+
+	function setLanguage(lang: Language) {
+		language.set(lang);
+		isDropdownOpen = false;
+	}
+
+	function toggleDropdown() {
+		isDropdownOpen = !isDropdownOpen;
+	}
 </script>
 
 <nav class="flex items-end justify-between bg-gray-800 p-4 text-white">
@@ -15,6 +27,61 @@
 	<ul class="flex items-center space-x-4">
 		<li><a href="/" class="hover:underline">Home</a></li>
 		<li><a href="/bag" class="hover:underline">Bag</a></li>
+		<li class="relative">
+			<button
+				on:click={toggleDropdown}
+				class="flex items-center rounded bg-blue-600 px-3 py-1 text-white hover:bg-blue-700"
+				aria-haspopup="true"
+				aria-expanded={isDropdownOpen}
+			>
+				{$language}
+				<svg
+					class="ml-1 h-4 w-4"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+					><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
+					></path></svg
+				>
+			</button>
+			{#if isDropdownOpen}
+				<div class="absolute right-0 z-10 mt-1 w-28 rounded bg-white shadow-lg">
+					<ul class="py-1 text-gray-800">
+						<li>
+							<button
+								on:click={() => setLanguage('EN')}
+								class="block w-full px-4 py-2 text-left hover:bg-gray-100 {$language === 'EN'
+									? 'bg-gray-100'
+									: ''}"
+							>
+								English
+							</button>
+						</li>
+						<li>
+							<button
+								on:click={() => setLanguage('ES')}
+								class="block w-full px-4 py-2 text-left hover:bg-gray-100 {$language === 'ES'
+									? 'bg-gray-100'
+									: ''}"
+							>
+								Español
+							</button>
+						</li>
+						<li>
+							<button
+								on:click={() => setLanguage('IT')}
+								class="block w-full px-4 py-2 text-left hover:bg-gray-100 {$language === 'IT'
+									? 'bg-gray-100'
+									: ''}"
+							>
+								Italiano
+							</button>
+						</li>
+					</ul>
+				</div>
+			{/if}
+		</li>
 		<div class="relative inline-block">
 			<a href="/bag" class="hover:underline" aria-label="Bag">
 				<svg

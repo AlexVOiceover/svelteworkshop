@@ -1,8 +1,45 @@
 <script lang="ts">
 	import type { Product } from '$lib/mockData';
+	import { language } from '$lib/stores';
 
 	export let product: Product;
 	export let onAddToBag: (product: Product) => void;
+
+	// Get the description based on selected language
+	$: description = product.descriptions && product.descriptions[$language] 
+		? product.descriptions[$language] 
+		: product.description;
+
+	// Localized strings
+	$: categoryLabel = {
+		'EN': 'Category',
+		'ES': 'Categoría',
+		'IT': 'Categoria'
+	}[$language];
+
+	$: availabilityLabel = {
+		'EN': 'Availability',
+		'ES': 'Disponibilidad',
+		'IT': 'Disponibilità'
+	}[$language];
+
+	$: inStockLabel = {
+		'EN': 'in stock',
+		'ES': 'en stock',
+		'IT': 'in magazzino'
+	}[$language];
+
+	$: outOfStockLabel = {
+		'EN': 'Out of stock',
+		'ES': 'Agotado',
+		'IT': 'Esaurito'
+	}[$language];
+
+	$: addToBagLabel = {
+		'EN': 'Add to Bag',
+		'ES': 'Añadir a la Bolsa',
+		'IT': 'Aggiungi alla Borsa'
+	}[$language];
 </script>
 
 <div class="bg-white rounded-lg shadow-lg p-6">
@@ -35,18 +72,18 @@
 			</div>
 			
 			<div class="mb-6">
-				<p class="text-gray-700 mb-4">{product.description}</p>
+				<p class="text-gray-700 mb-4">{description}</p>
 				
 				<div class="mb-4">
-					<span class="font-semibold">Category:</span> {product.category}
+					<span class="font-semibold">{categoryLabel}:</span> {product.category}
 				</div>
 				
 				<div class="mb-4">
-					<span class="font-semibold">Availability:</span> 
+					<span class="font-semibold">{availabilityLabel}:</span> 
 					{#if product.availableStock > 0}
-						<span class="text-green-600">{product.availableStock} in stock</span>
+						<span class="text-green-600">{product.availableStock} {inStockLabel}</span>
 					{:else}
-						<span class="text-red-600">Out of stock</span>
+						<span class="text-red-600">{outOfStockLabel}</span>
 					{/if}
 				</div>
 			</div>
@@ -56,7 +93,7 @@
 				on:click={() => onAddToBag(product)}
 				disabled={product.availableStock === 0}
 			>
-				{product.availableStock > 0 ? 'Add to Bag' : 'Out of Stock'}
+				{product.availableStock > 0 ? addToBagLabel : outOfStockLabel}
 			</button>
 		</div>
 	</div>
