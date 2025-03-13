@@ -30,6 +30,7 @@
 				<h2 class="mb-2 text-lg font-semibold">{product.name}</h2>
 				<p>{product.description}</p>
 				<p class="font-bold text-green-600">{product.price} £</p>
+                <img src={product.images[1]} alt={product.name} style="width: 20rem; border-radius: 10px;" />
 				<button
 					class="mt-2 rounded bg-blue-500 px-4 py-2 text-white"
 					on:click={() => addToBag(product)}
