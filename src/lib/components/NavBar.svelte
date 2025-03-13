@@ -2,7 +2,7 @@
 	export let bagItemCount: number = 0;
 </script>
 
-<nav class="flex items-end justify-between bg-gray-800 p-4 text-white">
+<nav class="sticky top-0 z-50 flex items-end justify-between bg-gray-800 p-4 text-white">
 	<div class="flex items-center">
 		<a href="/" aria-label="Home">
 			<img
