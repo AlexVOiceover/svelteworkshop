@@ -713,6 +713,8 @@ export const mockProductData = [
 	}
 ];
 
+export default mockProductData;
+
 // {
 // 	id: '51',
 // 	name: 'Trident Clash',
@@ -1260,6 +1262,6 @@ export const mockProductData = [
 // 	price: 5.99,
 // 	availableStock: 5,
 // 	images: ['images/minted-celeste-1.jpg', 'images/minted-celeste-2.jpg'],
-	// description:
-	// 	'Embark on a journey of freshness with Minted Celeste noodles, mingling invigorating mint and vivid vegetables for a celestial vegan creation.'
+// description:
+// 	'Embark on a journey of freshness with Minted Celeste noodles, mingling invigorating mint and vivid vegetables for a celestial vegan creation.'
 // }
