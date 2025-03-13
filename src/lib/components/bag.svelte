@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { bagItems, bagItemCount } from '$lib/stores';
+	import { bagItems} from '$lib/stores';
 	$: total = $bagItems.reduce((acc, item) => acc + item.price * (item.quantity || 0), 0);
-	function totalCartAmount() {
-		return $bagItems.reduce((acc, item) => acc + item.price * (item.quantity || 0), 0);
-	}
 
 	function calculateTotal(): number {
 		return $bagItems.reduce((acc, item) => acc + item.price * (item.quantity || 0), 0);
