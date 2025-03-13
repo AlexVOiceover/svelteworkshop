@@ -4,11 +4,11 @@
 	export let items: Product[];
 
 	function totalCartAmount() {
-		return items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+		return items.reduce((acc, item) => acc + item.price * (item.quantity || 0), 0);
 	}
 </script>
 
-<div class="rounded bg-gray-100 p-4 shadow">
+<div id="bag" class="rounded bg-gray-100 p-4 shadow">
 	<h2 class="mb-2 text-lg font-semibold">Bag Items</h2>
 	<ul>
 		{#each items as item}
